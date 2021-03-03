@@ -1,0 +1,20 @@
+body {
+    background-color: #9baaaa;
+}
+.hello {
+    font-family: "Bookman Old Style";
+    background-color: #d3d3d3;
+    font-size: 15px;
+    text-align: center;
+    display: block;
+}
+
+.login {
+    font-size: 20px;
+    font-style: revert;
+    text-align: center;
+
+}
+
+
+

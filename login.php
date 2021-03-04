@@ -21,9 +21,16 @@ if($connect->connect_errno!=0) {
     $login = $_POST['login'];
     $password = $_POST['password'];
 
-    $sql = ("SELECT * FROM users WHERE uzytkownik = '$login' AND haslo = '$password'");
 
-    if($result = @$connect->query($sql)) {
+    //Ustawienie encji dla loginu oraz hasła
+    $login = htmlentities($login,ENT_QUOTES,"UTF-8");
+    $password = htmlentities($password,ENT_QUOTES,"UTF-8");
+
+
+    if($result = @$connect->query (
+        sprintf ("SELECT * FROM users WHERE uzytkownik = '%s' AND haslo = '%s'",
+        mysqli_real_escape_string($connect,$login),
+        mysqli_real_escape_string($connect,$password)))) {
         $how_many_users = $result->num_rows;
         if ($how_many_users > 0) {
             $_SESSION['zalogowany'] = true;
@@ -33,6 +40,8 @@ if($connect->connect_errno!=0) {
             $_SESSION['password'] = $row['haslo'];
             $_SESSION['email'] = $row['email'];
             $_SESSION['money'] = $row['pieniadze'];
+            unset($_SESSION['blad']);
+
             $result->free_result();
             header('Location:gra.php');
         } else {

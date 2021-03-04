@@ -24,6 +24,14 @@ if (isset($_POST['email'])) {
         $_SESSION['e_email'] = "Podaj poprawny adres email!";
     }
 
+    $pass1 = $_POST['pass1'];
+    $pass2 = $_POST['pass2'];
+
+    if ($pass1 != $pass2) {
+        $everything_ok = false;
+        $_SESSION['e_pass'] = "Podane hasła nie zgadzają sie ze sobą";
+    }
+
 }
 ?>
 

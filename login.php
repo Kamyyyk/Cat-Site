@@ -20,8 +20,10 @@ $connect = new mysqli($host, $db_user,$db_password,$db_name);
     } else {
         $login = $_POST['login'];
         $password = $_POST['password'];
+
         //Ustawienie encji dla loginu
         $login = htmlentities($login, ENT_QUOTES, "UTF-8");
+
 
 
         if ($result = @$connect->query(

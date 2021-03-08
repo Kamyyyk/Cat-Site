@@ -9,3 +9,11 @@ body {
 .hello {
     text-align: center;
 }
+
+.g-recaptcha {
+    text-align: right;
+}
+form {
+    text-align: center;
+}
+

@@ -36,16 +36,13 @@ if (isset($_POST['email'])) {
 ?>
 
     <!DOCTYPE HTML>
-    <html lang="pl";>
+    <html lang="pl">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
         <title>Strona testowa jakiejś gry, z logowaniem :o</title>
         <link rel="stylesheet" href="styles/register.css">
-        <style>
-
-        </style>
-
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     </head>
 
 
@@ -91,7 +88,9 @@ if (isset($_POST['email'])) {
                 unset($_SESSION['e_rules']);
             }
             ?>
+            <div class="g-recaptcha" data-sitekey="6LdHQHcaAAAAALM6VRfCaerRAoPdZOQGDAzSqG4Q"></div>
             <input type="submit" value="Zarejestruj się" />
+        </form>
     </div>
     </body>
     </html>

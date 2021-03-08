@@ -27,9 +27,24 @@ if (isset($_POST['email'])) {
     $pass1 = $_POST['pass1'];
     $pass2 = $_POST['pass2'];
 
+    if ((strlen($pass1) < 3) || (strlen($pass1) > 20)) {
+        $everything_ok = false;
+        $_SESSION['e_pass'] = "Hasło musi posiadać od 3 do 20 znaków";
+
+    }
+
     if ($pass1 != $pass2) {
         $everything_ok = false;
         $_SESSION['e_pass'] = "Podane hasła nie zgadzają sie ze sobą";
+    }
+
+    if(!isset($_POST['rules'])) {
+        $everything_ok = false;
+        $_SESSION['e_rules'] = "Zaakceptuj regulamin";
+    }
+
+    if($everything_ok = true) {
+        echo "wszystko działa";
     }
 
 }
@@ -41,7 +56,7 @@ if (isset($_POST['email'])) {
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
         <title>Strona testowa jakiejś gry, z logowaniem :o</title>
-        <link rel="stylesheet" href="styles/register.css">
+        <link rel="stylesheet" href="styles/zarejestru.css">
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     </head>
 
@@ -89,6 +104,7 @@ if (isset($_POST['email'])) {
             }
             ?>
             <div class="g-recaptcha" data-sitekey="6LdHQHcaAAAAALM6VRfCaerRAoPdZOQGDAzSqG4Q"></div>
+            <br/>
             <input type="submit" value="Zarejestruj się" />
         </form>
     </div>

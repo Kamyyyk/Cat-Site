@@ -32,6 +32,7 @@ if (isset($_POST['email'])) {
         $_SESSION['e_pass'] = "Hasło musi posiadać od 3 do 20 znaków";
 
     }
+    $hashpass = password_hash($pass1, PASSWORD_DEFAULT);
 
     if ($pass1 != $pass2) {
         $everything_ok = false;
